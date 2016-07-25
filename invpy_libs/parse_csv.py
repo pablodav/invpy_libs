@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-def csv_as_dict(file, ref_header, delimiter=None):
+def csv_as_dict(file, ref_header, delimiter=";"):
     """
     http://stackoverflow.com/questions/14091387/creating-a-dictionary-from-a-csv-file
     :param file: Input csv file
@@ -16,10 +16,9 @@ def csv_as_dict(file, ref_header, delimiter=None):
     def lower_first(iterator):
         return itertools.chain([next(iterator).lower()], iterator)
 
-    if not delimiter:
-        delimiter = ';'
-
-    reader = csv.DictReader(lower_first(open(file, encoding='utf-8')), delimiter=delimiter)
+    reader = csv.DictReader(lower_first(open(file, encoding='utf-8')), 
+                            delimiter=delimiter, 
+                            skipinitialspace=True)
 
     result = {}
     for row in reader:

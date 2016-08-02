@@ -1,6 +1,8 @@
 #! python3
 # Example to get all values based on column index
 import openpyxl
+
+
 # from openpyxl.cell import get_column_letter,column_index_from_string
 
 def excel_get_dict(workbook, sheet, column_ref):
@@ -44,7 +46,7 @@ def excel_get_dict(workbook, sheet, column_ref):
             datadict.setdefault(sheet[columns.get(column_ref) + str(row)].value, {})[k] = sheet[v + str(row)].value
     return datadict
 
-# Example:
-# file = 'servers.xlsx'
-# servers = excel_get_dict(workbook, sheet, column_ref)
-# servers = excel_get_dict(file, 'Servers','Name')
+    # Example:
+    # file = 'servers.xlsx'
+    # servers = excel_get_dict(workbook, sheet, column_ref)
+    # servers = excel_get_dict(file, 'Servers','Name')

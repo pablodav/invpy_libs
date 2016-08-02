@@ -16,8 +16,8 @@ def csv_as_dict(file, ref_header, delimiter=";"):
     def lower_first(iterator):
         return itertools.chain([next(iterator).lower()], iterator)
 
-    reader = csv.DictReader(lower_first(open(file, encoding='utf-8')), 
-                            delimiter=delimiter, 
+    reader = csv.DictReader(lower_first(open(file, encoding='utf-8')),
+                            delimiter=delimiter,
                             skipinitialspace=True)
 
     result = {}

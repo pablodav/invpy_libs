@@ -9,7 +9,7 @@ def is_up(hostname):
     give_feedback = False
 
     if platform.system() == "Windows":
-        response = os.system("ping "+hostname+" -n 1")
+        response = os.system("ping " + hostname + " -n 1")
     else:
         response = os.system("ping -c 1 " + hostname)
 

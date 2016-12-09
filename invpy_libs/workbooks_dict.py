@@ -71,3 +71,58 @@ def excel_get_dict(workbook, sheet='Sheet1', column_ref='column1'):
     # file = 'servers.xlsx'
     # servers = excel_get_dict(workbook, sheet, column_ref)
     # servers = excel_get_dict(file, 'Servers','Name')
+
+
+def excel_get_list(workbook, sheet='Sheet1'):
+    """
+
+    :param workbook:   .xlsx file to read
+    :param sheet:      sheet name on the workbook
+    :return (list): list with the data
+    """
+
+    # Open the spreadsheet and get the latest dues status.
+    wb = openpyxl.load_workbook(workbook)
+    sheet = wb.get_sheet_by_name(sheet)
+    # Define columns index by Name with value in row 1
+    # Example: {'status': 'C', 'Notes': 'K'}
+    columns = defaultdict(dict)
+    # for 1 to last column
+
+    # Define the columns: {'column1': 1, 'column2': 2}
+    for i in range(1, sheet.max_column):
+        # set dict columns.setdefault('value', 'column')
+        ref_column_value = sheet.cell(row=1, column=i).value
+        # column_index is A, B, C, etc.
+        column_index = sheet.cell(row=1, column=i).column
+
+        columns[ref_column_value] = column_index
+
+    # Define sheet dictionary.
+
+    datalist = []
+
+    # Read each row of the sheet.
+    for row in range(2, sheet.max_row + 1):  # Skip the first row
+        # read each column of each row.
+        # k is key value, like: Name
+        # v is value of the key, the column index like A
+        rowdict = {}
+
+        for k, v in sorted(columns.items()):
+            column = k
+
+            column_coord = '{}{}'.format(v, str(row))
+            column_value = sheet[column_coord].value
+
+            # rowdict['column2'] = 'value'
+            rowdict[column] = column_value
+
+        datalist.append(rowdict)
+
+    return datalist
+
+    # Example:
+    # file = 'servers.xlsx'
+    # servers = excel_get_dict(workbook, sheet, column_ref)
+    # servers = excel_get_dict(file, 'Servers','Name')

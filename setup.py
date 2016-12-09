@@ -7,7 +7,7 @@
 from setuptools import setup
 
 setup(name='invpy_libs',
-      version='0.3.4',
+      version='0.4.0',
       description='Inventory automation libraries servers list',
       url='https://github.com/pablodav/invpy_libs.git',
       author='Pablo Estigarribia',

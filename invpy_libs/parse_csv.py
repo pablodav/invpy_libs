@@ -19,7 +19,7 @@ def csv_as_dict(file, ref_header, delimiter=";"):
     reader = csv.DictReader(lower_first(open(file, encoding='utf-8')),
                             delimiter=delimiter,
                             skipinitialspace=True)
-
+    import ipdb; ipdb.set_trace()
     result = {}
     for row in reader:
         key = row.pop(ref_header.lower())

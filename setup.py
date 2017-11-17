@@ -7,7 +7,7 @@
 from setuptools import setup
 
 setup(name='invpy_libs',
-      version='0.4.0',
+      version='0.4.1',
       description='Inventory automation libraries servers list',
       url='https://github.com/pablodav/invpy_libs.git',
       author='Pablo Estigarribia',
@@ -15,7 +15,6 @@ setup(name='invpy_libs',
       license='gplv3',
       packages=['invpy_libs'],
       install_requires=[
-            'openpyxl',
+          'openpyxl',
       ],
       zip_safe=False)
-

@@ -3,6 +3,7 @@ import io
 import os
 import csv
 import itertools
+import codecs
 from urllib import request
 
 def csv_as_dict(file, ref_header, delimiter=";", encoding='utf-8'):
@@ -21,7 +22,8 @@ def csv_as_dict(file, ref_header, delimiter=";", encoding='utf-8'):
         """
         return itertools.chain([next(iterator).lower()], iterator)
 
-    reader = csv.DictReader(lower_first(open(file, mode='r', encoding=encoding)),
+    reader = csv.DictReader(lower_first(codecs.open(file, mode='r', encoding=encoding,
+                                                    errors='replace')),
                             delimiter=delimiter,
                             skipinitialspace=True)
     result = {}
